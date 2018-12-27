@@ -1,0 +1,2 @@
+./cleaner
+./run $1 $2

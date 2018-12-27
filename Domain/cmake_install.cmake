@@ -1,4 +1,4 @@
-# Install script for directory: /home/christian/Desktop/c++/Domain
+# Install script for directory: /home/christian/Hiopdes/Domain
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

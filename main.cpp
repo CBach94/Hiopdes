@@ -22,6 +22,7 @@ int main(int argc, char const *argv[]) {
   using interpolationMethod = Interpolation<LagrangeBasis>;
   using projectionMethod    = GalerkinProjection;
 
+  // Timer for matrix overhead and solving.
   timer.tic();
   // Create a 2D standard element ~ [-1,1]^2
   auto element = Std2DElement<interpolationMethod,projectionMethod>(GLL,n);
@@ -43,56 +44,48 @@ int main(int argc, char const *argv[]) {
       // Source term
       vec RHS = zeros((n+1)*(n+1),1);
 
-    // Two element problem
+    // Three element problem
       // PDE operator
-      mat LHS_top    = LHS;
-      mat LHS_bottom = LHS;
-      mat LHS_topR   = LHS;
+      mat LHS_top    = LHS; // top element
+      mat LHS_bottom = LHS; // bottom elm.
+      mat LHS_topR   = LHS; // top-right elm.
       // Source term
-      vec RHS_top    = RHS;
-      vec RHS_topR   = RHS;
-      vec RHS_bottom = RHS;
+      vec RHS_top    = RHS; // top elm.
+      vec RHS_topR   = RHS; // top-right elm.
+      vec RHS_bottom = RHS; // bottom elm.
 
   // Impose boundary conditions
-    // Single element problem
-      element.setDirichletAt(North ,LHS ,RHS,100);
-      element.setDirichletAt(South ,LHS ,RHS,0  );
-      element.setDirichletAt(West  ,LHS ,RHS,100);
-      element.setDirichletAt(East  ,LHS ,RHS,0  );
+    element.setDirichletAt(North,LHS_top ,RHS_top,100);
+    element.setDirichletAt(West ,LHS_top ,RHS_top,100);
 
-    // Two element problem
-      // Top element boundary conditions
-      element.setDirichletAt(North,LHS_top ,RHS_top,100);
-      element.setDirichletAt(West ,LHS_top ,RHS_top,100);
+    element.setDirichletAt(South, LHS_bottom, RHS_bottom,0  );
+    element.setDirichletAt(West , LHS_bottom, RHS_bottom,100);
+    element.setDirichletAt(East , LHS_bottom, RHS_bottom,0  );
 
-      // Bottom element boundary conditions
-      element.setDirichletAt(South,LHS_bottom,RHS_bottom,0 );
-      element.setDirichletAt(West,LHS_bottom,RHS_bottom,100);
-      element.setDirichletAt(East ,LHS_bottom,RHS_bottom,0 );
+    element.setDirichletAt(North ,LHS_topR ,RHS_topR, 100);
+    element.setDirichletAt(South ,LHS_topR ,RHS_topR, 0  );
+    element.setDirichletAt(East  ,LHS_topR ,RHS_topR, 0  );
 
-      element.setDirichletAt(North ,LHS_topR ,RHS_topR, 100);
-      element.setDirichletAt(South ,LHS_topR ,RHS_topR, 0  );
-      element.setDirichletAt(East  ,LHS_topR ,RHS_topR, 0  );
+    // Connect elements
+    element.connectElements(
+      LHS_top,    RHS_top,    element.getIndiciesAt(South),
+      LHS_bottom, RHS_bottom, element.getIndiciesAt(North)
+    );
+    element.connectElements(
+      LHS_top,  RHS_top,  element.getIndiciesAt(East),
+      LHS_topR, RHS_topR, element.getIndiciesAt(West)
+    );
 
-      // Connect top and bottom element matrix system.
-      element.connectElements(
-        LHS_top,    RHS_top,    element.getIndiciesAt(South),
-        LHS_bottom, RHS_bottom, element.getIndiciesAt(North)
-      );
-      element.connectElements(
-        LHS_top,  RHS_top,  element.getIndiciesAt(East),
-        LHS_topR, RHS_topR, element.getIndiciesAt(West)
-      );
+    // Matrix system recast
+    mat A = LHS_top;
+    vec b = RHS_top;
 
-      // Matrix system recast
-      mat A = LHS_top;
-      vec b = RHS_top;
   // Solve PDEs
     vec psi = solve(A,b);
     double time = timer.toc();
-
     cout << "Elapsed time: " << time << endl;
 
+  // Output/Post-Processing
     mat Psi = reshape(psi,psi.n_rows/3,3);
 
     // GLL spaced points example

@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/christian/Hiopdes && $(CMAKE_COMMAND) -E cmake_progress_start /home/christian/Hiopdes/CMakeFiles /home/christian/Hiopdes/Domain/CMakeFiles/progress.marks
-	cd /home/christian/Hiopdes && $(MAKE) -f CMakeFiles/Makefile2 Domain/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/christian/Hiopdes/CMakeFiles /home/christian/Hiopdes/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/christian/Hiopdes/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/christian/Hiopdes && $(MAKE) -f CMakeFiles/Makefile2 Domain/clean
+	$(MAKE) -f CMakeFiles/Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -97,87 +97,84 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/christian/Hiopdes && $(MAKE) -f CMakeFiles/Makefile2 Domain/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/christian/Hiopdes && $(MAKE) -f CMakeFiles/Makefile2 Domain/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/christian/Hiopdes && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-Domain/CMakeFiles/Element.dir/rule:
-	cd /home/christian/Hiopdes && $(MAKE) -f CMakeFiles/Makefile2 Domain/CMakeFiles/Element.dir/rule
-.PHONY : Domain/CMakeFiles/Element.dir/rule
+#=============================================================================
+# Target rules for targets named Solver
 
-# Convenience name for target.
-Element: Domain/CMakeFiles/Element.dir/rule
+# Build rule for target.
+Solver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Solver
+.PHONY : Solver
 
+# fast build rule for target.
+Solver/fast:
+	$(MAKE) -f CMakeFiles/Solver.dir/build.make CMakeFiles/Solver.dir/build
+.PHONY : Solver/fast
+
+#=============================================================================
+# Target rules for targets named Interpolation
+
+# Build rule for target.
+Interpolation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Interpolation
+.PHONY : Interpolation
+
+# fast build rule for target.
+Interpolation/fast:
+	$(MAKE) -f Interpolation/CMakeFiles/Interpolation.dir/build.make Interpolation/CMakeFiles/Interpolation.dir/build
+.PHONY : Interpolation/fast
+
+#=============================================================================
+# Target rules for targets named Element
+
+# Build rule for target.
+Element: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Element
 .PHONY : Element
 
 # fast build rule for target.
 Element/fast:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/build
+	$(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/build
 .PHONY : Element/fast
 
-Element.o: Element.cpp.o
+main.o: main.cpp.o
 
-.PHONY : Element.o
-
-# target to build an object file
-Element.cpp.o:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/Element.cpp.o
-.PHONY : Element.cpp.o
-
-Element.i: Element.cpp.i
-
-.PHONY : Element.i
-
-# target to preprocess a source file
-Element.cpp.i:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/Element.cpp.i
-.PHONY : Element.cpp.i
-
-Element.s: Element.cpp.s
-
-.PHONY : Element.s
-
-# target to generate assembly for a file
-Element.cpp.s:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/Element.cpp.s
-.PHONY : Element.cpp.s
-
-Projection.o: Projection.cpp.o
-
-.PHONY : Projection.o
+.PHONY : main.o
 
 # target to build an object file
-Projection.cpp.o:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/Projection.cpp.o
-.PHONY : Projection.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/Solver.dir/build.make CMakeFiles/Solver.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-Projection.i: Projection.cpp.i
+main.i: main.cpp.i
 
-.PHONY : Projection.i
+.PHONY : main.i
 
 # target to preprocess a source file
-Projection.cpp.i:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/Projection.cpp.i
-.PHONY : Projection.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/Solver.dir/build.make CMakeFiles/Solver.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-Projection.s: Projection.cpp.s
+main.s: main.cpp.s
 
-.PHONY : Projection.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-Projection.cpp.s:
-	cd /home/christian/Hiopdes && $(MAKE) -f Domain/CMakeFiles/Element.dir/build.make Domain/CMakeFiles/Element.dir/Projection.cpp.s
-.PHONY : Projection.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/Solver.dir/build.make CMakeFiles/Solver.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -186,14 +183,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Element"
+	@echo "... Solver"
 	@echo "... edit_cache"
-	@echo "... Element.o"
-	@echo "... Element.i"
-	@echo "... Element.s"
-	@echo "... Projection.o"
-	@echo "... Projection.i"
-	@echo "... Projection.s"
+	@echo "... Interpolation"
+	@echo "... Element"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
@@ -205,6 +201,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/christian/Hiopdes && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Ofast -march=native   CMakeFiles/Solver.dir/main.cpp.o  -o Solver /usr/lib/libarmadillo.so Interpolation/libInterpolation.a Domain/libElement.a /usr/lib/libarmadillo.so -larmadillo 

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/christian/Hiopdes/Domain/Element.h
+Quadratures.h
+/home/christian/Hiopdes/Domain/Quadratures.h
+Projection.h
+/home/christian/Hiopdes/Domain/Projection.h
+
+/home/christian/Hiopdes/Domain/Projection.h
+armadillo
+-
+
+/home/christian/Hiopdes/Domain/Quadratures.h
+armadillo
+-
+
+/home/christian/Hiopdes/Interpolation/Interpolation.h
+armadillo
+-
+
+/home/christian/Hiopdes/Interpolation/LagrangeBasis.h
+armadillo
+-
+
+/home/christian/Hiopdes/main.cpp
+Interpolation/Interpolation.h
+/home/christian/Hiopdes/Interpolation/Interpolation.h
+Interpolation/LagrangeBasis.h
+/home/christian/Hiopdes/Interpolation/LagrangeBasis.h
+Domain/Element.h
+/home/christian/Hiopdes/Domain/Element.h
+stdlib.h
+-
+

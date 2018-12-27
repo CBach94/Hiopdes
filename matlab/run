@@ -1,0 +1,6 @@
+cd ../
+make
+
+./Mimetic $1 $2
+
+cd matlab
