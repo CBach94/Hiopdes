@@ -1,0 +1,2 @@
+/usr/bin/ar qc libInterpolation.a  CMakeFiles/Interpolation.dir/Interpolation.cpp.o CMakeFiles/Interpolation.dir/LagrangeBasis.cpp.o
+/usr/bin/ranlib libInterpolation.a

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/christian/Desktop/c++/Interpolation/Interpolation.cpp
+
+/home/christian/Desktop/c++/Interpolation/LagrangeBasis.cpp
+LagrangeBasis.h
+/home/christian/Desktop/c++/Interpolation/LagrangeBasis.h
+
+/home/christian/Desktop/c++/Interpolation/LagrangeBasis.h
+armadillo
+-
+

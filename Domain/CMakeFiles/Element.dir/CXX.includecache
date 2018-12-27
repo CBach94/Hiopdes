@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/christian/Desktop/c++/Domain/Element.cpp
+
+/home/christian/Desktop/c++/Domain/Projection.cpp
+Projection.h
+/home/christian/Desktop/c++/Domain/Projection.h
+
+/home/christian/Desktop/c++/Domain/Projection.h
+armadillo
+-
+
