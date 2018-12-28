@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]) {
 
   // Create LHS matrix
     // Diffusion term
-    double mu = 0.05; // Diffusion constant
+    double mu = 0.01; // Diffusion constant
     mat Laplacian = element.getLaplacian();
 
     // Advective term
@@ -89,12 +89,12 @@ int main(int argc, char const *argv[]) {
     mat Psi = reshape(psi,psi.n_rows/3,3);
 
     // GLL spaced points example
-    mat x = getNodes(GLL,n).col(0);
-    x.save("xe.txt", raw_ascii);
+    mat x = getNodes(GLL,N).col(0);
+    x.save("grid.txt", raw_ascii);
 
-    vec psiT  = Psi.col(0);
-    vec psiB  = Psi.col(1);
-    vec psiTR = Psi.col(2);
+    vec psiT  = element.evaluateFieldAt(Psi.col(0),x);
+    vec psiB  = element.evaluateFieldAt(Psi.col(1),x);
+    vec psiTR  = element.evaluateFieldAt(Psi.col(2),x);
 
     // Two element problem
     psiB.save(  "psiB.txt"  ,raw_ascii);

@@ -11,5 +11,5 @@ function retval = threeElmt(n,N)
 	
 	figure
 	hold on
-	plotField("","xe.txt");	
+	plotField("","grid.txt");	
 endfunction

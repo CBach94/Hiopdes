@@ -22,11 +22,11 @@ function plotField(field,grid)
 	surf(X,Y+2,psiT)
 	surf(X+2,Y+2,psiTR)
 
-	title(["h=", num2str(3) ", p=",num2str(n),", Advection-Diffusion, field no.", field])
+	title(["h=", num2str(3) ", p=",num2str(n-1),", Advection-Diffusion, field no.", field])
 	axis tight
 	colorbar
 %	colormap("hot")
-	shading interp
+%	shading interp
 	xlabel "x"
 	ylabel "y"
 
